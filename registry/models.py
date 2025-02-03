@@ -10,6 +10,17 @@ class Municipio(models.Model):
         verbose_name = 'Município'
         verbose_name_plural = 'Municípios'
 
+class Contato(models.Model):
+    id_contato = models.AutoField(primary_key=True)
+    contato_escolhas = [
+        ("telefone", "Telefone"),
+        ("email", "Email")
+    ]
+    tipo = models.CharField(max_length=10, choices=contato_escolhas)
+    chave = models.CharField(max_length=25, null=False, blank=False)
+
+    def __str__(self):
+        return f"{self.chave}"
 
 class Pessoa(models.Model):
     tipo_doc = models.CharField(max_length=50)
